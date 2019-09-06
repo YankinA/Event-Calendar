@@ -1,5 +1,5 @@
-## Event-Calendar - [GitHub pages]
-* Тестовое задание для разработчика frontend - [Задание](https://github.com/hhru/frontend-test)
+## Event-Calendar - [GitHub pages]()
+* Тестовое задание для frontend-разработчика - [Задание](https://github.com/hhru/frontend-test)
 * Задание без использования сторонних JS/CSS-библиотек.
 
 ### Логика работы календаря:

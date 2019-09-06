@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My calendar</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrap">
+        <div class="header-btn-group">
+          <button class="header-btn header-modal-add-event-fast-open">Добавить</button>
+          <button class="header-btn header-btn-reload">Обновить</button>
+          <div class="header-modal-add-event-fast display_none">
+            <button class="header-modal-add-event-fast_closed" >❌</button>
+            <span class="header-modal-add-event-fast-error"></span>
+            <input class="header-modal-add-event-fast-input" type="text" placeholder="16 мая, День рождения" value="" maxlength="35">
+            <button class="header-modal-add-event-fast_send">Создать</button>
+          </div>
+        </div>
+        <div class="header-search-wrap">
+          <button class="header-search-modal-btn_closed display_none">❌</button>
+          <img class="header-search-img-luppa"  src="img/luppa.png">
+          <input type="text" class="header-search-input" placeholder="Событие, дата или участник" maxlength="20">
+          <div class="header-search-modal display_none">
+            <div class="header-search-modal-events">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="calendar">
+      <section class="calendar-today-date">
+        <div class="btn-group-month">
+          <button class="btn-previous-month"> &#9664; </button>
+          <span class="calendar-current-date"></span>
+          <button class="btn-next-month"> &#9654; </button>
+          <button class="btn-today">Сегодня</button>
+        </div>
+      </section>
+      <section class="calendar-days">
+        <table class='calendar-days-table'>
+        </table>
+      </section>
+      <div class="modal-add-event display_none">
+        <button class="modal-add-event-btn_closed" data-type="closed">❌</button>
+        <span class="modal-add-event-error"></span>
+        <div class="modal-add-event-wrapper">
+          <div class="modal-add-event-pointer"></div>
+          <input class="modal-add-event-item input-title" data-type="title-edit" type="text" placeholder="Событие" value="" maxlength="22">
+          <h3 class="modal-add-event-item event-title" data-type="title"></h3>
+          <input class="modal-add-event-item input-date" data-type="date-edit" type="date" placeholder="День, месяц, год" value="">
+          <p class="modal-add-event-item event-date" data-type="date"></p>
+          <input class="modal-add-event-item input-names" data-type="names-edit" type="text" placeholder="Имена участников" value="" maxlength="25">
+          <p class="modal-add-event-item event-names" data-type="names"></p>
+          <textarea class="modal-add-event-item input-description" data-type="description-edit" type="text" placeholder="Описание" value="" maxlength="186"></textarea>
+          <p class="modal-add-event-item event-description" data-type="description"></p>
+          <button class="modal-add-event-btn_send" data-type="send" disabled="true">Готово</button>
+          <button class="modal-add-event-btn_remove" data-type="remove">Удалить</button>
+        </div>
+      </div>
+      
+      <div class="modal-event-list display_none">
+        <span class="modal-event-list-day-date">7авг'19, Cреда</span>
+        <button class="modal-event-list-btn_closed" data-type="closed">❌</button>
+        <div class="modal-event-list-events">
+        </div>
+      </div>
+    </main>
+    <div class="modal-background display_none"></div>
+    <template id="tmpl">
+      <!-- Шаблон дня недели -->
+      <td class="calendar-day" data-type="calendar-day">
+        <span class="calendar-day-week"></span>
+        <span class="calendar-day-number"></span>
+        <div class="calendar-day-event-list">
+        </div>
+        <button class="calendar-day-event-btn-open-list display_none" data-type="btn-open-list-event">еще 5</button>
+      </td>
+      <!-- Шаблон события в календаре-->
+      <div class="calendar-day-event" data-type="calendar-day-event">
+        <h4 class="calendar-day-event-topic"></h4>
+        <p class="calendar-day-event-members"></p>
+      </div>
+      <!-- Шаблон собтия в поиске-->
+      <div class="header-search-modal-event">
+        <hr>
+        <p class="header-search-modal-event-item header-search-modal-event-title"></p>
+        <p class="header-search-modal-event-item header-search-modal-event-date"></p>
+        <p class="header-search-modal-event-item header-search-modal-event-names"></p>
+      </div>
+      <!-- Шаблон собтия в дне недели-->
+      <div class="modal-event-list-event" data-type="event" data-id="" data-date="">
+        <hr>
+        <p class="modal-event-list-event-item modal-event-list-event-title"></p>
+        <p class="modal-event-list-event-item modal-event-list-event-names"></p>
+        <p class="modal-event-list-event-item modal-event-list-event-description"></p>
+      </div>
+    </template>
+    <script src="src/supports.js" ></script>
+    <script src="src/renders/renderCalendarCurrentDate.js" ></script>
+    <script src="src/renders/renderDaysTable.js" ></script>
+    <script src="src/renders/renderCalendarDay.js" ></script>
+    <script src="src/renders/modalWindows/renderModalAddEventFast.js" ></script>
+    <script src="src/renders/modalWindows/renderSearchModal.js" ></script>
+    <script src="src/renders/modalWindows/renderModalAddEvent.js" ></script>
+    <script src="src/renders/modalWindows/renderModalEventList.js" ></script>
+    <script src="src/renders/addEvent.js" ></script>
+    <script src="src/renders/removeEvent.js" ></script>
+    <script src="src/renders/renderEventsList.js" ></script>
+    <script src="src/app.js" ></script>
+  </body>
+</html>
